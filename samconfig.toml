@@ -13,9 +13,13 @@ parallel = true
 lint = true
 
 [default.deploy.parameters]
-capabilities = "CAPABILITY_IAM"
-confirm_changeset = true
+stack_name = "smd-pr-agent"
 resolve_s3 = true
+s3_prefix = "smd-pr-agent"
+region = "us-west-2"
+confirm_changeset = true
+capabilities = "CAPABILITY_IAM"
+image_repositories = ["PRAgentFunction=269715254496.dkr.ecr.us-west-2.amazonaws.com/smdpragentf3062c46/pragentfunctionccb17128repo"]
 
 [default.package.parameters]
 resolve_s3 = true
@@ -28,12 +32,3 @@ warm_containers = "EAGER"
 
 [default.local_start_lambda.parameters]
 warm_containers = "EAGER"
-
-[prod.deploy.parameters]
-stack_name = "smd-pr-agent"
-resolve_s3 = true
-s3_prefix = "smd-pr-agent"
-region = "us-west-2"
-confirm_changeset = true
-capabilities = "CAPABILITY_IAM"
-image_repositories = ["PRAgentFunction=269715254496.dkr.ecr.us-west-2.amazonaws.com/smdpragentf3062c46/pragentfunctionccb17128repo"]
